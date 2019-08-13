@@ -1,2 +1,0 @@
-# pythonTraining
-Training Repo
