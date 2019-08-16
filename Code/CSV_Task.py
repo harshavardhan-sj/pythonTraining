@@ -43,7 +43,10 @@ import datetime
 #is running on, and therefore usable for local paths.
 import os.path
 
-path = os.path.join("pythonTraining","Helper","CSV_Task","100 Sales Records.csv")
+#Getting current working directory
+cur_dir = os.getcwd()
+
+path = os.path.join(cur_dir,"Helper","CSV_Task","100 Sales Records.csv")
 
 #Class to perform CSV file operations.
 class Task_csv:
@@ -66,7 +69,7 @@ class Task_csv:
             df = df.sort_values('Region')
             #New file to store the sorted Region values.
             df.to_csv('full_list_sorted.csv')
-            with open(os.path.join("C:/","Python27","full_list_sorted.csv")) \
+            with open(os.path.join(cur_dir,"full_list_sorted.csv")) \
                  as csvfile:
                 reader = csv.DictReader(csvfile)
                 print("File opened successfully!!")
@@ -121,7 +124,7 @@ class Task_csv:
             with open(path) as csvfile:
                 reader = csv.DictReader(csvfile)
                 print("file opened successfully!!!")
-                file_path = os.path.join("C:/","Python27","asia_item_type.csv")
+                file_path = os.path.join(cur_dir,"asia_item_type.csv")
                 #List to store Asia region items.
                 listed = []
                 for row in reader:
@@ -154,7 +157,7 @@ class Task_csv:
                 valid_date = []
                 #List to store the items which are having valid dates.
                 items = []
-                file_path = os.path.join("C:/","Python27","valid_dates_items.csv")
+                file_path = os.path.join(cur_dir,"valid_dates_items.csv")
                 print("*****************************************************")
                 print("Items with valid ship date added to valid_dates_items.csv")
                 print("new file is created in {}".format(file_path))

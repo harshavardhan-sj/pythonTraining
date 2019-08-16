@@ -123,7 +123,7 @@ class Excel_Task:
             print("\nUnable to load workbook")
             print(fnf_error)
 
-    def column_data_into_new_file(self, input_filepath):
+    def column_data_into_new_file(self, input_filepath, cur_dir):
         """
             Reads the excel file and get 
             the column data and write into the new excel file
@@ -138,7 +138,7 @@ class Excel_Task:
         try:
             #To read and store entire data in the excel sheet into dataframe
             df = pd.read_excel(input_filepath, "SalesOrders",index=False)
-            new_output_file_path = os.path.join("C:/","Python27","new_col.xlsx")
+            new_output_file_path = os.path.join(cur_dir,"new_col.xlsx")
 
         #To write the data in dataframe into newly created excel sheet
         #Only the specified column has been written into new excel sheet
@@ -153,7 +153,7 @@ class Excel_Task:
             print(fnf_error)
         
         
-    def write_data_into_new_file(self, input_filepath):
+    def write_data_into_new_file(self, input_filepath, cur_dir):
         """
             Reads the excel file and 
 	    write all the date into the new excel file
@@ -174,7 +174,7 @@ class Excel_Task:
             df_4 = pd.read_excel(input_filepath, "MyLinks", index=False)
 
             #New file path
-            new_file_path = os.path.join("C:/","Python27","new_excel_file.xlsx")
+            new_file_path = os.path.join(cur_dir,"new_excel_file.xlsx")
 
             #Writing specified sheets of excel file into newly created excel file
             with pd.ExcelWriter(new_file_path) as writer:
@@ -192,8 +192,11 @@ class Excel_Task:
 
 def main():
 
+    #Current working directory
+    cur_dir = os.getcwd()
+   
     #Input excel file path
-    input_filepath = os.path.join("pythonTraining","Helper","Excel_Task","SampleData.xlsx")
+    input_filepath = os.path.join(cur_dir,"Helper","Excel_Task","SampleData.xlsx")
     
     #Object creation
     excel_obj = Excel_Task()
@@ -205,10 +208,10 @@ def main():
     excel_obj.extract_first_column_data(input_filepath)
 
     #Calling method column_data_into_new_file() from object excel_obj
-    excel_obj.column_data_into_new_file(input_filepath)
+    excel_obj.column_data_into_new_file(input_filepath, cur_dir)
 
     #Calling method write_data_into_new_file() from object excel_obj
-    excel_obj.write_data_into_new_file(input_filepath)
+    excel_obj.write_data_into_new_file(input_filepath, cur_dir)
 
 if __name__ == "__main__":
     main()

@@ -50,6 +50,8 @@ from collections import defaultdict
 #Csv module implements classes to read and write tabular data in CSV format.
 import csv
 
+#Getting the current working directory
+cur_dir = os.getcwd()
 
 class Task_02:
 
@@ -83,7 +85,7 @@ class Task_02:
             :params: None
             :return: None
         """
-        src_folder = os.path.join("pythonTraining","Helper","Files_Task")
+        src_folder = os.path.join(cur_dir,"Helper","Files_Task")
         print("***************To list duplicate files******************")
 
         def generate_md5(fname, chunk_size=1024):
@@ -166,7 +168,7 @@ class Task_02:
             :return: None
         """
         print("**************To display word count in a file****************")
-        fname = os.path.join("pythonTraining","Helper","Files_Task","word_count.txt")
+        fname = os.path.join(cur_dir,"Helper","Files_Task","word_count.txt")
         num_words = 0
          
         with open(fname, 'r') as f:
@@ -193,7 +195,7 @@ class Task_02:
             :return: None
         """
         print("****To capitalise first letter of all the words in file*****")
-        file_name_path = os.path.join("pythonTraining","Helper","Files_Task","capitalise_first_letter.txt")
+        file_name_path = os.path.join(cur_dir,"Helper","Files_Task","capitalise_first_letter.txt")
         
         with open(file_name_path, 'r') as fp:
             file_content = fp.read()
@@ -215,7 +217,7 @@ class Task_02:
         print("***************To search a specific file******************")
         print("Searching the file.....{}", format("dups_02.txt"))
         #time.sleep(10)
-        path = os.path.join("pythonTraining","Helper","Files_Task")
+        path = os.path.join(cur_dir,"Helper","Files_Task")
         required_file_name = "dups_02.txt"
 
         def find_required_file(name, path):
@@ -239,7 +241,7 @@ class Task_02:
         """
         print("*******To remove specific string from particular file*******")
         
-        file_path = os.path.join("pythonTraining","Helper","Files_Task","remove_string.txt")
+        file_path = os.path.join(cur_dir,"Helper","Files_Task","remove_string.txt")
         string_to_be_removed = ['hello']
         print("The string to be removed is : {}".format(string_to_be_removed))
         lst = []

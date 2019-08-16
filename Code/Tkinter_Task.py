@@ -44,19 +44,20 @@ from files_dir_task import Task_02
 #Importing class Task_02 from python_file_task.py
 from excel_file_task import Excel_Task
 
-
+#Getting the current working directory
+cur_dir = os.getcwd()
 
 #File path of CSV file operation task.
-csv_path = os.path.join("pythonTraining","Code","CSV_Task.py")
+csv_path = os.path.join(cur_dir,"Code","CSV_Task.py")
 
 #File path of Gmail Automation task.
-gmail_path = os.path.join("pythonTraining","Code","Gmail_Automation.py")
+gmail_path = os.path.join(cur_dir,"Code","Gmail_Automation.py")
 
 #File path of Files and directories operation task.
-file_path = os.path.join("pythonTraining","Code","Files_Task.py")
+file_path = os.path.join(cur_dir,"Code","Files_Task.py")
 
 #File path of Excel file operation task.
-excel_path = os.path.join("pythonTraining","Code","Excel_Task.py")
+excel_path = os.path.join(cur_dir,"Code","Excel_Task.py")
 
 
 #Class to create GUI Application
