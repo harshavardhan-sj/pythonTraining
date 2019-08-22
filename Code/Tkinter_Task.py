@@ -27,22 +27,22 @@ import sys
 import os
 
 #Tkinter is an inbuilt Python module used to create simple GUI apps.
-import Tkinter
+import Tkinter as tk
 
 #Import everything from tkinter module.
 from Tkinter import *
 
 #Importing class Task_csv from csv_task.py
-from try_csv_task import Task_csv
+from CSV_Task import Task_csv
 
 #Importing class Task_01 from Gmail_automation_1.2.py
-from Gmail_automation_1_2 import Task_01
+from Gmail_Automation import Task_01
 
 #Importing class Task_02 from python_file_task.py
-from files_dir_task import Task_02
+from Files_Task import Task_02
 
 #Importing class Task_02 from python_file_task.py
-from excel_file_task import Excel_Task
+from Excel_Task import Excel_Task
 
 #Getting the current working directory
 cur_dir = os.getcwd()
@@ -60,41 +60,53 @@ file_path = os.path.join(cur_dir,"Code","Files_Task.py")
 excel_path = os.path.join(cur_dir,"Code","Excel_Task.py")
 
 
+
 #Class to create GUI Application
 class GUI_task:
 
 
-    def __init__(self, master):
+    def __init__(self):
 
         """To initialize and init gets called automatically
             whenever we create an object.
             
-            :param str master:  The main window.
+            :param: None
             :return: None
 
         """
-        #Used for grouping and organizing the widgets.
-        frame = Frame(master)
+        #To create a GUI window 
+        self.root = Tk()
+
+        #To set the title of GUI window
+        self.root.title("Task execution window")
+
+        #To set the background colour of GUI window 
+        self.root.configure(background="light blue")
         
-        #Pack organizes the widgets in blocks before placing
-        #in the parent widget.
-        frame.pack()
 
         #Adding csv button to the main window.
-        self.csvbutton = Button(frame,text="CSV",bg='blue',width=40,fg='white',command= self.run_csv_task)
-        self.csvbutton.pack()
+        csvbutton = tk.Button(self.root,text="CSV",bg='blue',width=40,fg='white',command= self.run_csv_task)
+        csvbutton.pack()
 
         #Adding gmail button to the main window.
-        self.gmailbutton = Button(frame,text="Gmail",bg='blue',width=40,fg='white',command= self.run_gmail_task)
-        self.gmailbutton.pack()
+        gmailbutton = tk.Button(self.root,text="Gmail",bg='blue',width=40,fg='white',command= self.run_gmail_task)
+        gmailbutton.pack()
 
         #Adding file button to the main window.
-        self.filebutton = Button(frame,text="FilesOperation",bg='blue',width=40,fg='white',command= self.run_files_task)
-        self.filebutton.pack()
+        filebutton = tk.Button(self.root,text="FilesOperation",bg='blue',width=40,fg='white',command= self.run_files_task)
+        filebutton.pack()
 
         #Adding excel button to the main window.
-        self.excelbutton = Button(frame,text="Excel",bg='blue',width=40,fg='white',command= self.run_excel_task)
-        self.excelbutton.pack()
+        excelbutton =tk.Button(self.root,text="Excel",bg='blue',width=40,fg='white',command= self.run_excel_task)
+        excelbutton.pack()
+        
+        #Adding Exit button to the main window.
+        exitbutton = tk.Button(self.root,text="Exit",bg='blue',width=40,fg='white',command= self.quit_program)
+        exitbutton.pack()
+
+        #To wait for an event to occur and process the event
+        #till the window is not closed. 
+        self.root.mainloop()
               
     def run_csv_task(self):
         """
@@ -156,28 +168,22 @@ class GUI_task:
         except IOError as fnf_error:
             print(fnf_error)
 
+    def quit_program(self):
+        """
+            To Create an exit button.
+            
+            :param: None
+            :return: None
+        """
+        #To close the window in Tkinter
+        self.root.destroy()
+   
+
 def main():
-
-
-    #To create a GUI window 
-    top=Tk()
-
-    #To set the title of GUI window
-    top.title("Task execution window")
-
-    #To set the background colour of GUI window 
-    top.configure(background="light blue")
     
     #Creating object for Class GUI_task
-    GUI_task_obj = GUI_task(top)
+    GUI_task_obj = GUI_task()
 
-    #To wait for an event to occur and process the event
-    #till the window is not closed. 
-    top.mainloop()
-           
     
 if __name__ == "__main__":
     main()
-    
-
-    
