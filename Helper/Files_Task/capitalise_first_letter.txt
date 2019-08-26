@@ -1,0 +1,2 @@
+we have installed python2.7.
+python is a scripting language.
